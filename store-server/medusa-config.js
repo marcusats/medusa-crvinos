@@ -52,6 +52,20 @@ const plugins = [
       },
     },
   },
+  {
+    resolve: `medusa-file-s3`,
+    options: {
+        s3_url: process.env.S3_URL,
+        bucket: process.env.S3_BUCKET,
+        region: process.env.S3_REGION,
+        access_key_id: process.env.S3_ACCESS_KEY_ID,
+        secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+        cache_control: process.env.S3_CACHE_CONTROL || "max-age=31536000",
+        // optional
+        // download_file_duration: process.env.S3_DOWNLOAD_FILE_DURATION,
+        // prefix: process.env.S3_PREFIX,
+    },
+  },
 ];
 
 const modules = {
@@ -76,7 +90,7 @@ const projectConfig = {
   store_cors: STORE_CORS,
   database_url: DATABASE_URL,
   admin_cors: ADMIN_CORS,
-   redis_url: REDIS_URL
+  redis_url: REDIS_URL
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule} */
